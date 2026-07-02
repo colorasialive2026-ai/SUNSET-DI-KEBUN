@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>E-Ticket Premium</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+min-height:100vh;display:flex;justify-content:center;align-items:center;
+background:linear-gradient(#9be7ff,#d7f8ff,#7ce58b);padding:20px;overflow:hidden
+}
+.sun{position:fixed;top:40px;right:60px;width:120px;height:120px;background:#ffd84d;border-radius:50%;box-shadow:0 0 40px #ffd84d;animation:spin 15s linear infinite}
+.sun:before{content:'';position:absolute;inset:-25px;border-radius:50%;background:repeating-conic-gradient(#ffd84d 0deg 10deg,transparent 10deg 20deg);z-index:-1}
+@keyframes spin{100%{transform:rotate(360deg)}}
+.ticket{width:100%;max-width:850px;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.header{background:linear-gradient(135deg,#ff9800,#ffcc00);padding:25px;text-align:center;color:#fff}
+.header h1{font-size:38px}
+.content{padding:30px}
+.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed #ddd;gap:20px}
+.label{font-weight:bold;color:#666}
+.value{font-weight:600;color:#222;text-align:right}
+.status{margin:20px 0;padding:15px;border-radius:15px;background:#e8fff1;color:#1b8f3f;text-align:center;font-size:22px;font-weight:bold}
+.barcode-wrap{text-align:center;margin-top:25px}
+.barcode{font-family:monospace;font-size:42px;letter-spacing:1px;line-height:1}
+.barcode-number{margin-top:10px;font-weight:bold}
+.qr{
+width:180px;height:180px;margin:20px auto;border:10px solid #000;
+display:flex;justify-content:center;align-items:center;font-weight:bold
+}
+.footer{padding:20px;text-align:center;background:#fafafa}
+button{padding:12px 25px;border:none;border-radius:12px;background:#4caf50;color:white;cursor:pointer}
+@media print{button,.sun{display:none} body{background:#fff}}
+</style>
+</head>
+<body>
+
+<div class="sun"></div>
+
+<div class="ticket">
+<div class="header">
+<h1>🎫 E-TICKET PREMIUM</h1>
+<p>Tiket Digital Resmi</p>
+</div>
+
+<div class="content">
+
+<div class="row"><span class="label">Nama Pembeli</span><span id="nama" class="value">-</span></div>
+<div class="row"><span class="label">Email</span><span id="email" class="value">-</span></div>
+<div class="row"><span class="label">Nomor HP</span><span id="telepon" class="value">-</span></div>
+<div class="row"><span class="label">Alamat</span><span id="alamat" class="value">-</span></div>
+<div class="row"><span class="label">Nomor Tiket</span><span id="ticketNumber" class="value">-</span></div>
+<div class="row"><span class="label">Tanggal Pembelian</span><span id="tanggal" class="value">-</span></div>
+
+<div class="status">✅ TIKET VALID & AKTIF</div>
+
+<div class="barcode-wrap">
+<div class="barcode">||| |||||| || ||||| ||||| || |||||| |||</div>
+<div class="barcode-number" id="barcodeText"></div>
+
+<div class="qr" id="qrBox">QR TICKET</div>
+</div>
+
+</div>
+
+<div class="footer">
+<button onclick="window.print()">🖨 Cetak E‑Ticket</button>
+</div>
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("userData")) || {};
+
+const ticket = "ET" + Date.now();
+
+document.getElementById("ticketNumber").textContent = ticket;
+document.getElementById("barcodeText").textContent = ticket;
+
+document.getElementById("nama").textContent = data.nama || "-";
+document.getElementById("email").textContent = data.email || "-";
+document.getElementById("telepon").textContent = data.telepon || "-";
+document.getElementById("alamat").textContent = data.alamat || "-";
+document.getElementById("tanggal").textContent = data.tanggal || "-";
+
+document.getElementById("qrBox").textContent = ticket;
+</script>
+
+
+<script>
+function saveOrder(d){localStorage.setItem('ticketOrder',JSON.stringify(d));}
+function loadOrder(){try{return JSON.parse(localStorage.getItem('ticketOrder'))||{};}catch(e){return {};}}
+</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const d=loadOrder();const el=document.createElement('div');el.style.marginTop='20px';el.innerHTML='<b>Nama:</b> '+(d.nama||d.name||'-');document.body.appendChild(el);});</script></body>
+</html>
