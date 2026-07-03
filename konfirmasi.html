@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan QRIS Pembayaran Ulang</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#000;
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:#fff;
+    position:relative;
+}
+
+/* Efek cahaya background */
+body::before{
+    content:'';
+    position:absolute;
+    width:800px;
+    height:800px;
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.05),
+    transparent 70%);
+    animation:pulse 3s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:.7;
+    }
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
+
+/* QR Frame */
+.qris-box{
+    width:340px;
+    height:340px;
+    background:#fff;
+    border-radius:30px;
+    padding:20px;
+    position:relative;
+    z-index:2;
+
+    box-shadow:
+    0 0 20px #fff,
+    0 0 40px #fff,
+    0 0 80px rgba(255,255,255,.9),
+    0 0 120px rgba(255,255,255,.8),
+    0 0 180px rgba(255,255,255,.7);
+
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.02);
+    }
+}
+
+.qris-box img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* Text */
+.title{
+    margin-top:50px;
+    font-size:30px;
+    font-weight:bold;
+    text-align:center;
+    z-index:2;
+    text-shadow:
+    0 0 20px rgba(255,255,255,.8);
+}
+
+.subtitle{
+    margin-top:15px;
+    font-size:18px;
+    opacity:.85;
+    text-align:center;
+    z-index:2;
+}
+
+.timer{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+    color:#ffe600;
+    text-shadow:
+    0 0 15px #ffe600;
+    z-index:2;
+}
+
+/* Partikel */
+.particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:#fff;
+    border-radius:50%;
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+@media(max-width:500px){
+
+    .qris-box{
+        width:270px;
+        height:270px;
+    }
+
+    .title{
+        font-size:24px;
+    }
+
+    .subtitle{
+        font-size:16px;
+        padding:0 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="qris-box">
+    <img src="qris-confirmasi.png" alt="QRIS">
+</div>
+
+<div class="title">
+    SCAN QRIS PEMBAYARAN ULANG
+</div>
+
+<div class="subtitle">
+    Silakan scan QRIS di atas untuk melanjutkan pembayaran.
+</div>
+
+<div class="timer">
+    Halaman akan ditutup dalam <span id="count">60</span> detik
+</div>
+
+<script>
+for(let i=0;i<70;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(5+Math.random()*10)+'s';
+    p.style.animationDelay=Math.random()*5+'s';
+    document.body.appendChild(p);
+}
+
+let time=60;
+const count=document.getElementById('count');
+
+const interval=setInterval(()=>{
+    time--;
+    count.innerHTML=time;
+
+    if(time<=0){
+        clearInterval(interval);
+
+        window.open('','_self');
+        window.close();
+
+        setTimeout(()=>{
+            location.href='about:blank';
+        },500);
+    }
+},1000);
+</script>
+
+</body>
+</html>
