@@ -1646,7 +1646,7 @@ let left=12,v=31,s=7200;
 setInterval(()=>{v=28+Math.floor(Math.random()*20);view.textContent='👀 '+v+' orang sedang melihat halaman';},5000);
 setInterval(()=>{if(left>3&&Math.random()<0.3)left--;document.getElementById('left').textContent='🔥 Tersisa '+left+' tiket lagi';},15000);
 setInterval(()=>{let h=Math.floor(s/3600),m=Math.floor((s%3600)/60),d=s%60;cd.textContent=[h,m,d].map(x=>String(x).padStart(2,'0')).join(':');if(s>0)s--;},1000);
-const names=['Andi','Rina','Budi','Salsa'];const cities=['Jakarta','Bandung','Pekanbaru','Bogor'];
+const names=['Andi','Rina','Budi','Salsa'];const cities=['Jakarta','Bandung','Surabaya','Bogor'];
 const live=document.createElement('div');live.className='live';document.body.appendChild(live);
 setInterval(()=>{live.textContent='🔴 '+names[Math.floor(Math.random()*names.length)]+' dari '+cities[Math.floor(Math.random()*cities.length)]+' baru membeli '+(1+Math.floor(Math.random()*2))+' tiket';},7000);
 
