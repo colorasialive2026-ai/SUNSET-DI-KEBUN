@@ -132,18 +132,32 @@ font-weight:bold;
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-emailjs.init({publicKey:"YOUR_PUBLIC_KEY"});
-let emailSent=false;
-const SERVICE_ID="YOUR_SERVICE_ID";
-const TEMPLATE_ID="YOUR_TEMPLATE_ID";
+emailjs.init({publicKey:"GANTI_DENGAN_PUBLIC_KEY"});
+
+let emailSent = false;
+const SERVICE_ID = "GANTI_DENGAN_SERVICE_ID";
+const TEMPLATE_ID = "GANTI_DENGAN_TEMPLATE_ID";
+
 function sendEmail(){
- const data=JSON.parse(localStorage.getItem("userData")||"{}");
- emailjs.send(SERVICE_ID,TEMPLATE_ID,data)
- .then(()=>console.log("Email terkirim"))
- .catch(e=>console.error(e));
+  const data = JSON.parse(localStorage.getItem("userData") || "{}");
+
+  const params = {
+    to_name: data.nama || "",
+    to_email: data.email || "",
+    order_id: localStorage.getItem("orderId") || "",
+    total: localStorage.getItem("totalPembayaran") || "",
+    wa: data.wa || ""
+  };
+
+  emailjs.send(SERVICE_ID, TEMPLATE_ID, params)
+    .then(() => console.log("Email auto-reply terkirim"))
+    .catch(err => console.error("Email gagal:", err));
 }
 </script>
+
 </head>
 <body>
 
@@ -226,7 +240,7 @@ window.location.href="success.html";
 
 }
 
-},10000);
+},1000);
 
 </script>
 
