@@ -286,7 +286,7 @@ document.getElementById('loading').style.display='flex';
 
 setTimeout(()=>{
 window.location.href='loading.html';
-},36000);
+},3000);
 });
 </script>
 
@@ -295,5 +295,5 @@ window.location.href='loading.html';
 function saveOrder(d){localStorage.setItem('ticketOrder',JSON.stringify(d));}
 function loadOrder(){try{return JSON.parse(localStorage.getItem('ticketOrder'))||{};}catch(e){return {};}}
 </script>
-<script>setTimeout(()=>location.href="success.html",5000);</script></body>
+</body>
 </html>
