@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Premium Event V5</title>
+<link rel="preload" href="logo.png" as="image">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -222,7 +223,7 @@ to{opacity:1;transform:translateY(0)}
 <body>
 
 <div id="loader">
-<img src="logo.png" class="loader-logo">
+<img src="logo.png" class="loader-logo" loading="eager" fetchpriority="high">
 <div class="progress"><span></span></div>
 </div>
 
@@ -230,8 +231,8 @@ to{opacity:1;transform:translateY(0)}
 
 <section class="hero">
 <div class="container hero-content">
-<img src="logo-event.png" class="logo">
-<img src="banner.png" class="banner">
+<img src="logo-event.png" class="logo" loading="eager">
+<img src="banner.png" class="banner" loading="lazy">
 
 <h1>PEMBELIAN TIKET TAMBAHAN RESMI DIBUKA</h1>
 <p class="subtitle">Kuota tambahan terbatas • Amankan tiket sebelum habis</p>
@@ -269,7 +270,7 @@ Festival premium dengan tata panggung modern, ambience senja, dan pengalaman ter
 <section class="lineup reveal">
 <div class="card">
 <h2 style="margin-bottom:20px">LINE UP</h2>
-<img src="lineup.jpg">
+<img src="lineup.jpg" loading="lazy">
 </div>
 </section>
 
