@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Premium Event V5</title>
-<link rel="preload" href="logo.png" as="image">
+<link rel="preload" href="logo.webp" as="image">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -223,7 +223,7 @@ to{opacity:1;transform:translateY(0)}
 <body>
 
 <div id="loader">
-<img src="logo.png" class="loader-logo" loading="eager" fetchpriority="high">
+<img src="logo.webp" class="loader-logo" alt="Logo Event" loading="eager" fetchpriority="high">
 <div class="progress"><span></span></div>
 </div>
 
@@ -231,8 +231,8 @@ to{opacity:1;transform:translateY(0)}
 
 <section class="hero">
 <div class="container hero-content">
-<img src="logo-event.png" class="logo" loading="eager">
-<img src="banner.png" class="banner" loading="lazy">
+<img src="logo-event.png" class="logo" alt="Logo Event" loading="eager">
+<img src="banner.png" class="banner" alt="Banner Event" loading="lazy">
 
 <h1>PEMBELIAN TIKET TAMBAHAN RESMI DIBUKA</h1>
 <p class="subtitle">Kuota tambahan terbatas • Amankan tiket sebelum habis</p>
@@ -270,7 +270,7 @@ Festival premium dengan tata panggung modern, ambience senja, dan pengalaman ter
 <section class="lineup reveal">
 <div class="card">
 <h2 style="margin-bottom:20px">LINE UP</h2>
-<img src="lineup.jpg" loading="lazy">
+<img src="lineup.jpg" alt="Line Up Event" loading="lazy">
 </div>
 </section>
 
@@ -282,12 +282,14 @@ Festival premium dengan tata panggung modern, ambience senja, dan pengalaman ter
 <a href="#" id="ticketBtn" class="floating-btn">🎫 Beli Tiket Sekarang</a>
 
 <script>
+window.addEventListener('load',()=>{
 setTimeout(()=>{
 document.getElementById('loader').style.opacity='0';
 setTimeout(()=>{
 document.getElementById('loader').style.display='none';
 },800);
-},2000);
+},800);
+});
 
 const target=new Date("2026-12-31T18:00:00").getTime();
 
@@ -311,7 +313,9 @@ entry.target.classList.add('show');
 
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-document.getElementById('ticketBtn').addEventListener('click',function(e){
+const btn=document.getElementById('ticketBtn');
+if(btn){
+btn.addEventListener('click',function(e){
 e.preventDefault();
 
 const t=document.getElementById('transition');
@@ -321,6 +325,7 @@ setTimeout(()=>{
 window.location='tiket.html';
 },1500);
 });
+}
 </script>
 
 </body>
