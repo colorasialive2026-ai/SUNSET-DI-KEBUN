@@ -225,9 +225,16 @@ animation:r 1s linear infinite;
 </div>
 
 <script>
+
 if(!localStorage.getItem('orderId')){
-localStorage.setItem('orderId','BIGU-'+Date.now());
+  const d = new Date();
+  const y = String(d.getFullYear()).slice(-2);
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  const rand = String(Math.floor(Math.random()*1000)).padStart(3,'0');
+  localStorage.setItem('orderId', `SDK${y}${m}${day}${rand}`);
 }
+
 
 document.getElementById('orderId').textContent=localStorage.getItem('orderId');
 
@@ -281,13 +288,6 @@ updateBtn();
 
 cek.addEventListener('change',updateBtn);
 
-btn.addEventListener('click',()=>{
-document.getElementById('loading').style.display='flex';
-
-setTimeout(()=>{
-window.location.href='loading.html';
-},3000);
-});
 </script>
 
 
@@ -295,5 +295,34 @@ window.location.href='loading.html';
 function saveOrder(d){localStorage.setItem('ticketOrder',JSON.stringify(d));}
 function loadOrder(){try{return JSON.parse(localStorage.getItem('ticketOrder'))||{};}catch(e){return {};}}
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+async function bacaNominalDariGambar(fileObj){
+  const { data:{ text } } = await Tesseract.recognize(fileObj,'ind+eng');
+  const nums = text.replace(/[^0-9]/g,' ').split(/\s+/)
+    .filter(Boolean).map(n=>parseInt(n,10));
+  return nums.length ? Math.max(...nums) : null;
+}
+
+btn.addEventListener('click', async ()=>{
+  document.getElementById('loading').style.display='flex';
+  const total = Number(localStorage.getItem('totalPembayaran') || 0);
+
+  try{
+    const nominalOCR = await bacaNominalDariGambar(file.files[0]);
+
+    if(nominalOCR !== null && Math.abs(nominalOCR-total) <= 100){
+      location.href = 'loading.html';
+    }else{
+      location.href = 'failed.html';
+    }
+  }catch(err){
+    console.error(err);
+    location.href = 'failed.html';
+  }
+});
+</script>
+
 </body>
 </html>
