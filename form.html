@@ -1392,6 +1392,8 @@ DETAIL TIKET
 
 let detailHTML = "";
 
+function escapeHtml(str){return String(str).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+
 items.forEach(function(item){
 
 const subtotal =
@@ -1406,7 +1408,7 @@ detailHTML +=
 
 <span>
 
-${item.nama}
+${escapeHtml(item.nama)}
 
 (${item.qty})
 
@@ -1487,29 +1489,29 @@ const el =
 document.getElementById(id);
 
 if(!el.value.trim()){
-
-alert(
-
-"Mohon lengkapi seluruh data."
-
-);
-
+alert("Mohon lengkapi seluruh data.");
 el.focus();
-
+lanjutBtn.disabled=false;
 return;
-
 }
 
 }
 
 
-if(!/\S+@\S+\.\S+/.test(email.value)){
+const namaEl=document.getElementById('nama');
+const identitasEl=document.getElementById('identitas');
+const nomorIdEl=document.getElementById('nomorId');
+const emailEl=document.getElementById('email');
+const waEl=document.getElementById('wa');
+const alamatEl=document.getElementById('alamat');
+
+if(!/\S+@\S+\.\S+/.test(emailEl.value)){
 alert('Email tidak valid.');
 lanjutBtn.disabled=false;
 return;
 }
 
-if(!/^08[0-9]{8,13}$/.test(wa.value)){
+if(!/^08[0-9]{8,13}$/.test(waEl.value)){
 alert('Nomor WhatsApp tidak valid.');
 lanjutBtn.disabled=false;
 return;
@@ -1542,7 +1544,7 @@ localStorage.setItem(
 
 "nama",
 
-nama.value
+namaEl.value
 
 );
 
@@ -1550,7 +1552,7 @@ localStorage.setItem(
 
 "identitas",
 
-identitas.value
+identitasEl.value
 
 );
 
@@ -1558,7 +1560,7 @@ localStorage.setItem(
 
 "nomorIdentitas",
 
-nomorId.value
+nomorIdEl.value
 
 );
 
@@ -1566,7 +1568,7 @@ localStorage.setItem(
 
 "email",
 
-email.value
+emailEl.value
 
 );
 
@@ -1574,7 +1576,7 @@ localStorage.setItem(
 
 "wa",
 
-wa.value
+waEl.value
 
 );
 
@@ -1582,7 +1584,7 @@ localStorage.setItem(
 
 "alamat",
 
-alamat.value
+alamatEl.value
 
 );
 
@@ -1598,17 +1600,17 @@ emailjs.send(
 
 {
 
-nama:nama.value,
+nama:namaEl.value,
 
-identitas:identitas.value,
+identitas:identitasEl.value,
 
-nomor_id:nomorId.value,
+nomor_id:nomorIdEl.value,
 
-email:email.value,
+email:emailEl.value,
 
-whatsapp:wa.value,
+whatsapp:waEl.value,
 
-alamat:alamat.value,
+alamat:alamatEl.value,
 
 jenis_tiket:jenis,
 
