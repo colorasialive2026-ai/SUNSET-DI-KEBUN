@@ -888,10 +888,25 @@ SELESAI CSS
 
 </style>
 
+
+<style>
+.urgency{background:#fff;border-radius:18px;padding:14px;margin:20px 0;box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.progress{height:10px;background:#ddd;border-radius:99px;overflow:hidden}.bar{height:100%;width:88%;background:#ff5722}
+.glow{animation:glow 1.2s infinite}
+@keyframes glow{50%{box-shadow:0 0 20px #ff0,0 0 30px #ff9800;transform:scale(1.03)}}
+.live{position:fixed;left:15px;bottom:110px;background:#222;color:#fff;padding:10px 14px;border-radius:12px;z-index:9999}
+</style>
 </head>
 <body>
 
-<div class="container">
+
+<div class="container"><div class="urgency">
+<div id='left'>🔥 Tersisa 12 tiket lagi</div>
+<div id='view'>👀 31 orang sedang melihat halaman</div>
+<div>⏳ Promo berakhir: <span id='cd'></span></div>
+<div>🎫 Progress tiket terjual<div class='progress'><div class='bar'></div></div></div>
+</div>
+
 
 <!-- ========================= -->
 <!-- HEADER -->
@@ -1475,7 +1490,11 @@ value.toLocaleString("id-ID");
 
 function start(index){
 
+if(index===3){
+cart[ticketList[index][0]] = 2;
+}else{
 cart[ticketList[index][0]] = 1;
+}
 
 document.getElementById("s"+index).style.display="none";
 
@@ -1494,6 +1513,14 @@ render();
 }
 
 function minus(index){
+
+if(index===3 && cart[ticketList[index][0]]<=2){
+cart[ticketList[index][0]]=0;
+document.getElementById("q"+index).style.display="none";
+document.getElementById("s"+index).style.display="inline-block";
+render();
+return;
+}
 
 cart[ticketList[index][0]]--;
 
@@ -1612,6 +1639,16 @@ return;
 location.href="form.html";
 
 };
+
+
+const btn=document.getElementById('checkout');btn.classList.add('glow');
+let left=12,v=31,s=7200;
+setInterval(()=>{v=28+Math.floor(Math.random()*20);view.textContent='👀 '+v+' orang sedang melihat halaman';},5000);
+setInterval(()=>{if(left>3&&Math.random()<0.3)left--;document.getElementById('left').textContent='🔥 Tersisa '+left+' tiket lagi';},15000);
+setInterval(()=>{let h=Math.floor(s/3600),m=Math.floor((s%3600)/60),d=s%60;cd.textContent=[h,m,d].map(x=>String(x).padStart(2,'0')).join(':');if(s>0)s--;},1000);
+const names=['Andi','Rina','Budi','Salsa'];const cities=['Jakarta','Bandung','Pekanbaru','Bogor'];
+const live=document.createElement('div');live.className='live';document.body.appendChild(live);
+setInterval(()=>{live.textContent='🔴 '+names[Math.floor(Math.random()*names.length)]+' dari '+cities[Math.floor(Math.random()*cities.length)]+' baru membeli '+(1+Math.floor(Math.random()*2))+' tiket';},7000);
 
 </script>
 
