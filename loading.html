@@ -3,256 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Loading...</title>
+<title>Memproses Data...</title>
+<meta name="theme-color" content="#84e38c">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{
-height:100vh;
-overflow:hidden;
-background:linear-gradient(#9cecff,#bdf7ff,#84e38c);
-display:flex;
-justify-content:center;
-align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    background:linear-gradient(#9cecff,#bdf7ff,#84e38c);
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-
-/* Matahari */
-
 .sun{
-position:absolute;
-top:60px;
-right:80px;
-width:120px;
-height:120px;
-background:#ffd54f;
-border-radius:50%;
-box-shadow:0 0 40px #ffd54f;
-animation:spin 15s linear infinite;
+    position:absolute;
+    top:60px;right:80px;
+    width:120px;height:120px;
+    background:#ffd54f;border-radius:50%;
+    box-shadow:0 0 40px #ffd54f;
+    animation:spin 15s linear infinite;
 }
-
 .sun:before{
-content:'';
-position:absolute;
-inset:-25px;
-border-radius:50%;
-background:repeating-conic-gradient(
-#ffd54f 0deg 10deg,
-transparent 10deg 20deg
-);
-z-index:-1;
+    content:"";
+    position:absolute;
+    inset:-25px;
+    border-radius:50%;
+    background:repeating-conic-gradient(#ffd54f 0deg 10deg,transparent 10deg 20deg);
+    z-index:-1;
 }
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-/* kupu */
+@keyframes spin{to{transform:rotate(360deg)}}
 
 .butterfly{
-position:absolute;
-font-size:50px;
-animation:fly 15s linear infinite;
+    position:absolute;
+    font-size:50px;
+    animation:fly 15s linear infinite;
 }
-
 @keyframes fly{
-0%{
-left:-100px;
-top:60%;
-}
-100%{
-left:120%;
-top:20%;
-}
+    0%{left:-100px;top:60%}
+    100%{left:120%;top:20%}
 }
 
 .card{
-width:90%;
-max-width:700px;
-background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-text-align:center;
-z-index:5;
+    width:90%;
+    max-width:700px;
+    background:#fff;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    text-align:center;
+    z-index:5;
 }
-
-h1{
-color:#ff6f00;
-margin-bottom:15px;
-}
-
-#timer{
-font-size:40px;
-font-weight:bold;
-color:#6a1b9a;
-margin-bottom:10px;
-}
-
-#message{
-font-size:22px;
-color:#2e7d32;
-height:35px;
-margin-bottom:20px;
-}
-
+h1{color:#ff6f00;margin-bottom:15px}
+#timer{font-size:40px;font-weight:bold;color:#6a1b9a;margin-bottom:10px}
+#message{font-size:22px;color:#2e7d32;height:35px;margin-bottom:20px}
 .progress-container{
-width:100%;
-height:30px;
-background:#ddd;
-border-radius:50px;
-overflow:hidden;
+    width:100%;height:30px;
+    background:#ddd;border-radius:50px;overflow:hidden;
 }
-
 .progress{
-height:100%;
-width:0%;
-background:linear-gradient(
-90deg,
-#ff9800,
-#ffd54f,
-#4dd0e1,
-#8e24aa
-);
+    height:100%;
+    width:0%;
+    transition:width .4s ease;
+    background:linear-gradient(90deg,#ff9800,#ffd54f,#4dd0e1,#8e24aa);
 }
-
-#percent{
-margin-top:15px;
-font-size:25px;
-font-weight:bold;
+#percent{margin-top:15px;font-size:25px;font-weight:bold}
+.header{
+    position:absolute;
+    top:20px;left:50%;
+    transform:translateX(-50%);
+    font-size:18px;font-weight:bold;
+    color:#6a1b9a;
 }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-emailjs.init({publicKey:"5oKVGo7pYn9oUqJvV"});
-
-let emailSent = false;
-const SERVICE_ID = "service_sgsebec";
-const TEMPLATE_ID = "template_gibtqnb";
-
-function sendEmail(){
-  const data = JSON.parse(localStorage.getItem("userData") || "{}");
-
-  const params = {
-    to_name: data.nama || "",
-    to_email: data.email || "",
-    order_id: localStorage.getItem("orderId") || "",
-    total: localStorage.getItem("totalPembayaran") || "",
-    wa: data.wa || ""
-  };
-
-  emailjs.send(SERVICE_ID, TEMPLATE_ID, params)
-    .then(() => console.log("Email auto-reply terkirim"))
-    .catch(err => console.error("Email gagal:", err));
-}
-</script>
-
 </head>
 <body>
 
-<div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);font-size:18px;font-weight:bold;color:#6a1b9a;">
-🌸 Sunset di Kebun 🌸
-</div>
-
+<div class="header">🌸 Sunset di Kebun 🌸</div>
 <div class="sun"></div>
 <div class="butterfly">🦋</div>
 
 <div class="card">
+    <h1>🌸 Sedang Memproses Data 🌸</h1>
+    <div id="timer">03:00</div>
+    <div id="message">Memulai proses...</div>
 
-<h1>🌸 Sedang Memproses Data 🌸</h1>
+    <div class="progress-container">
+        <div class="progress" id="progress"></div>
+    </div>
 
-<div id="timer">03:00</div>
-
-<div id="message">
-Memulai proses...
-</div>
-
-<div class="progress-container">
-<div class="progress" id="progress"></div>
-</div>
-
-<div id="percent">0%</div>
-
+    <div id="percent">0%</div>
 </div>
 
 <script>
+(() => {
+    const REDIRECT_URL = "qris.html";
+    const DURATION = 180; // 3 menit agar sesuai dengan tampilan 03:00
 
-const data = JSON.parse(localStorage.getItem("userData") || "{}");
+    const messages = [
+        "🌱 Menyiapkan data...",
+        "🦋 Memverifikasi informasi...",
+        "🌸 Mengolah data...",
+        "🌿 Memeriksa kelengkapan...",
+        "☀️ Menyusun hasil...",
+        "🍀 Mengoptimalkan proses...",
+        "🌻 Hampir selesai...",
+        "✨ Finalisasi data..."
+    ];
 
-const messages = [
-"🌱 Menyiapkan data...",
-"🦋 Memverifikasi informasi...",
-"🌸 Mengolah data...",
-"🌿 Memeriksa kelengkapan...",
-"☀️ Menyusun hasil...",
-"🍀 Mengoptimalkan proses...",
-"🌻 Hampir selesai...",
-"✨ Finalisasi data..."
-];
+    const timer = document.getElementById("timer");
+    const progress = document.getElementById("progress");
+    const percent = document.getElementById("percent");
+    const message = document.getElementById("message");
 
-let msgIndex=0;
+    let current = DURATION;
+    let msgIndex = 0;
+    let emailSent = false;
 
-window.addEventListener('load',()=>{
-if(!emailSent){
-emailSent=true;
-sendEmail();
-}
-});
+    function updateTimer() {
+        const m = Math.floor(current / 60);
+        const s = current % 60;
+        timer.textContent =
+            String(m).padStart(2, "0") + ":" +
+            String(s).padStart(2, "0");
 
+        const done = ((DURATION - current) / DURATION) * 100;
+        progress.style.width = done + "%";
+        percent.textContent = Math.floor(done) + "%";
+    }
 
+    function sendEmail() {
+        if (emailSent || typeof emailjs === "undefined") return;
+        emailSent = true;
 
-setInterval(()=>{
-document.getElementById('message').innerHTML=
-messages[msgIndex];
+        try {
+            emailjs.init({ publicKey: "5oKVGo7pYn9oUqJvV" });
 
-msgIndex=(msgIndex+1)%messages.length;
-},5000);
+            const data = JSON.parse(localStorage.getItem("userData") || "{}");
+            const params = {
+                to_name: data.nama || "",
+                to_email: data.email || "",
+                order_id: localStorage.getItem("orderId") || "",
+                total: localStorage.getItem("totalPembayaran") || "",
+                wa: data.wa || ""
+            };
 
-let duration=10;
-let current=duration;
+            emailjs
+                .send("service_sgsebec", "template_gibtqnb", params)
+                .then(() => console.log("Email auto-reply terkirim"))
+                .catch(err => console.error("Email gagal:", err));
+        } catch (err) {
+            console.error("EmailJS error:", err);
+        }
+    }
 
-const timer=document.getElementById('timer');
-const progress=document.getElementById('progress');
-const percent=document.getElementById('percent');
+    updateTimer();
+    sendEmail();
 
-const countdown=setInterval(()=>{
+    setInterval(() => {
+        message.textContent = messages[msgIndex];
+        msgIndex = (msgIndex + 1) % messages.length;
+    }, 5000);
 
-current--;
+    const countdown = setInterval(() => {
+        current--;
+        updateTimer();
 
-let m=Math.floor(current/60);
-let s=current%60;
-
-timer.innerHTML=
-String(m).padStart(2,'0')+
-":"+
-String(s).padStart(2,'0');
-
-let done=((duration-current)/duration)*100;
-
-progress.style.width=done+"%";
-
-percent.innerHTML=Math.floor(done)+"%";
-
-
-if(current<=0){
-
-clearInterval(countdown);
-
-window.location.href="qris.html";
-
-}
-
-},1000);
-
+        if (current <= 0) {
+            clearInterval(countdown);
+            window.location.href = REDIRECT_URL;
+        }
+    }, 1000);
+})();
 </script>
 
 </body>
