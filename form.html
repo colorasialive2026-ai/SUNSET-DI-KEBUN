@@ -25,6 +25,8 @@ FORM PEMESANAN
 
 </title>
 
+<link rel="preload" href="logo.webp" as="image">
+
 <link
 rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -925,7 +927,7 @@ HEADER
 
 <div class="logo">
 
-<img src="logo.png" alt="Logo">
+<img src="logo.webp" alt="Logo" loading="eager" fetchpriority="high" decoding="async">
 
 <div>
 
@@ -951,7 +953,7 @@ HERO
 
 <section class="hero">
 
-<img src="lineup.png" alt="Sunset di Kebun">
+<img src="lineup.png" alt="Sunset di Kebun" loading="lazy" decoding="async">
 
 <div class="hero-overlay"></div>
 
@@ -1330,6 +1332,10 @@ localStorage.getItem("checkout_items")
 
 );
 
+if(items.length===0){
+window.location.href='tiket.html';
+}
+
 const total = Number(
 
 localStorage.getItem("totalPembayaran")
@@ -1454,11 +1460,9 @@ jenis || "-";
 BUTTON LANJUT
 ========================================== */
 
-document.getElementById(
-
-"lanjut"
-
-).onclick = function(){
+const lanjutBtn=document.getElementById("lanjut");
+lanjutBtn.onclick = function(){
+lanjutBtn.disabled=true;
 
 const wajib = [
 
@@ -1498,6 +1502,19 @@ return;
 
 }
 
+
+if(!/\S+@\S+\.\S+/.test(email.value)){
+alert('Email tidak valid.');
+lanjutBtn.disabled=false;
+return;
+}
+
+if(!/^08[0-9]{8,13}$/.test(wa.value)){
+alert('Nomor WhatsApp tidak valid.');
+lanjutBtn.disabled=false;
+return;
+}
+
 if(
 
 !document.getElementById("setuju1").checked ||
@@ -1512,6 +1529,7 @@ alert(
 
 );
 
+lanjutBtn.disabled=false;
 return;
 
 }
@@ -1630,17 +1648,11 @@ error
 LOADING
 ========================================== */
 
-document.getElementById(
-
-"loading"
-
-).style.display="flex";
+document.getElementById("loading").style.display="flex";
 
 setTimeout(function(){
-
 window.location.href="qris.html";
-
-},3000);
+},2000);
 
 };
 
@@ -1656,17 +1668,6 @@ function saveOrder(d){localStorage.setItem('ticketOrder',JSON.stringify(d));}
 function loadOrder(){try{return JSON.parse(localStorage.getItem('ticketOrder'))||{};}catch(e){return {};}}
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-const form=document.querySelector('form');
-if(form){form.addEventListener('submit',e=>{
-e.preventDefault();
-const d={};
-form.querySelectorAll('input,select,textarea').forEach(i=>d[i.name||i.id]=i.value);
-saveOrder(d);
-location.href='loading.html';
-});}
-});
-</script></body>
+</body>
 
 </html>
