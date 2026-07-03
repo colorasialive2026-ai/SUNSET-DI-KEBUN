@@ -30,6 +30,7 @@ display:flex;justify-content:center;align-items:center;font-weight:bold
 }
 .footer{padding:20px;text-align:center;background:#fafafa}
 button{padding:12px 25px;border:none;border-radius:12px;background:#4caf50;color:white;cursor:pointer}
+@page{margin:0;}
 @media print{button,.sun{display:none} body{background:#fff}}
 </style>
 </head>
@@ -64,31 +65,50 @@ button{padding:12px 25px;border:none;border-radius:12px;background:#4caf50;color
 </div>
 
 <div class="footer">
-<button onclick="window.print()">🖨 Cetak E‑Ticket</button>
+<button onclick="window.print()">🖨 Cetak E‑Ticket</button> <button onclick="window.print()">⬇ Simpan PDF</button>
 </div>
 </div>
+
 
 <script>
-const data = JSON.parse(localStorage.getItem("userData")) || {};
+if(!localStorage.getItem("ticketOrder") && !localStorage.getItem("userData")){
+  window.location.href="index.html";
+}
 
-const ticket = "ET" + Date.now();
+const data = JSON.parse(localStorage.getItem("userData") || "{}");
+
+let ticket = localStorage.getItem("ticketNumber");
+if(!ticket){
+  ticket = "ET" + Date.now();
+  localStorage.setItem("ticketNumber", ticket);
+}
 
 document.getElementById("ticketNumber").textContent = ticket;
 document.getElementById("barcodeText").textContent = ticket;
 
 document.getElementById("nama").textContent = data.nama || "-";
 document.getElementById("email").textContent = data.email || "-";
-document.getElementById("telepon").textContent = data.telepon || "-";
+document.getElementById("telepon").textContent = data.wa || data.telepon || "-";
 document.getElementById("alamat").textContent = data.alamat || "-";
-document.getElementById("tanggal").textContent = data.tanggal || "-";
 
-document.getElementById("qrBox").textContent = ticket;
+let tanggal = localStorage.getItem("tanggalPembelian");
+if(!tanggal){
+  tanggal = new Date().toLocaleString("id-ID");
+  localStorage.setItem("tanggalPembelian", tanggal);
+}
+document.getElementById("tanggal").textContent = tanggal;
+
+const qrBox = document.getElementById("qrBox");
+qrBox.innerHTML = "";
+new QRCode(qrBox,{
+  text:ticket,
+  width:160,
+  height:160
+});
 </script>
 
 
-<script>
-function saveOrder(d){localStorage.setItem('ticketOrder',JSON.stringify(d));}
-function loadOrder(){try{return JSON.parse(localStorage.getItem('ticketOrder'))||{};}catch(e){return {};}}
-</script>
-<script>document.addEventListener('DOMContentLoaded',()=>{const d=loadOrder();const el=document.createElement('div');el.style.marginTop='20px';el.innerHTML='<b>Nama:</b> '+(d.nama||d.name||'-');document.body.appendChild(el);});</script></body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</body>
 </html>
