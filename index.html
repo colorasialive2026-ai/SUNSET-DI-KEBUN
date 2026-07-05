@@ -1,332 +1,1868 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Premium Event V5</title>
-<link rel="preload" href="logo.webp" as="image">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+SUNSET DI KEBUN 2026 | Official Ticketing
+</title>
+
+<meta
+name="description"
+content="Pembelian tiket resmi SUNSET DI KEBUN 2026. Aman, cepat dan terpercaya.">
+
+<meta
+name="keywords"
+content="Sunset Di Kebun,Tiket Festival,Official Ticket,Konser Indonesia">
+
+<meta
+name="theme-color"
+content="#0b0b0b">
+
+<meta
+property="og:title"
+content="SUNSET DI KEBUN 2026">
+
+<meta
+property="og:description"
+content="Official Ticketing">
+
+<meta
+property="og:type"
+content="website">
+
+<meta
+property="og:image"
+content="banner.png">
+
+<meta
+property="og:locale"
+content="id_ID">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+/* =====================================================
+ROOT
+===================================================== */
+
+:root{
+
+--primary:#F5B041;
+
+--secondary:#F39C12;
+
+--dark:#0B0B0B;
+
+--dark2:#141414;
+
+--white:#FFFFFF;
+
+--gray:#CFCFCF;
+
+--radius:22px;
+
+--shadow:
+0 15px 40px rgba(0,0,0,.25);
+
+--transition:.35s ease;
+
+}
+
+/* =====================================================
+RESET
+===================================================== */
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
 body{
-font-family:Inter,Arial,sans-serif;
+
+font-family:'Poppins',sans-serif;
+
 background:#080808;
-color:#fff;
+
+color:white;
+
 overflow-x:hidden;
+
 }
 
-#loader{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:99999;
-transition:opacity .8s ease;
-}
+/* =====================================================
+GLOBAL
+===================================================== */
 
-.loader-logo{
-width:120px;
-animation:pulse 1.5s infinite;
-}
+img{
 
-.progress{
-width:220px;
-height:4px;
-background:#222;
-margin-top:20px;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress span{
 display:block;
-height:100%;
-width:0;
-background:#fff;
-animation:load 2s linear forwards;
+
+max-width:100%;
+
+height:auto;
+
 }
 
-@keyframes load{
-to{width:100%}
+a{
+
+text-decoration:none;
+
+color:inherit;
+
 }
 
-@keyframes pulse{
-50%{transform:scale(1.05)}
-}
+button{
 
-.hero{
-min-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),
-url('background.jpg') center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:40px 20px;
+font-family:inherit;
+
+cursor:pointer;
+
 }
 
 .container{
-width:100%;
-max-width:1200px;
+
+width:min(1200px,92%);
+
 margin:auto;
+
+}
+
+/* =====================================================
+PRELOADER
+===================================================== */
+
+#loader{
+
+position:fixed;
+
+inset:0;
+
+background:#000;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+z-index:999999;
+
+transition:opacity .6s ease;
+
+}
+
+.loader-logo{
+
+width:120px;
+
+animation:pulse 1.4s infinite;
+
+}
+
+.loading-text{
+
+margin-top:20px;
+
+font-size:14px;
+
+letter-spacing:3px;
+
+color:#ddd;
+
+}
+
+.progress{
+
+margin-top:18px;
+
+width:220px;
+
+height:5px;
+
+background:#222;
+
+border-radius:99px;
+
+overflow:hidden;
+
+}
+
+.progress span{
+
+display:block;
+
+height:100%;
+
+width:0;
+
+background:linear-gradient(
+
+90deg,
+
+#F5B041,
+
+#FFD54F
+
+);
+
+animation:loading 2s linear forwards;
+
+}
+
+@keyframes loading{
+
+to{
+
+width:100%;
+
+}
+
+}
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* =====================================================
+HERO
+===================================================== */
+
+.hero{
+
+position:relative;
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:90px 0;
+
+background:
+
+linear-gradient(
+
+rgba(0,0,0,.45),
+
+rgba(0,0,0,.88)
+
+),
+
+url("background.jpg")
+
+center center/
+
+cover
+
+no-repeat;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+radial-gradient(
+
+circle,
+
+transparent,
+
+rgba(0,0,0,.45)
+
+);
+
 }
 
 .hero-content{
+
+position:relative;
+
+z-index:2;
+
 text-align:center;
+
+max-width:900px;
+
+margin:auto;
+
 }
 
 .logo{
+
 width:140px;
-margin-bottom:20px;
+
+margin:auto;
+
+margin-bottom:25px;
+
 }
 
 .banner{
+
 width:100%;
-max-width:850px;
-border-radius:24px;
-box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+border-radius:26px;
+
+box-shadow:
+
+0 30px 60px
+
+rgba(0,0,0,.40);
+
 }
 
-h1{
-font-size:clamp(32px,5vw,64px);
-margin-top:25px;
+.hero h1{
+
+margin-top:35px;
+
+font-size:
+
+clamp(
+
+34px,
+
+5vw,
+
+72px
+
+);
+
+font-weight:800;
+
+line-height:1.1;
+
 }
 
-.subtitle{
-opacity:.85;
-margin-top:10px;
+.hero p{
+
+margin-top:20px;
+
+font-size:18px;
+
+color:#d8d8d8;
+
+line-height:1.8;
+
 }
 
-.countdown{
-display:flex;
+/* =====================================================
+CTA
+===================================================== */
+
+.hero-button{
+
+margin-top:35px;
+
+display:inline-flex;
+
+align-items:center;
+
 justify-content:center;
-gap:12px;
-margin-top:25px;
-flex-wrap:wrap;
-}
 
-.box{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-padding:14px;
-border-radius:14px;
-min-width:75px;
-}
+padding:
 
-section{
-padding:90px 20px;
-}
+18px 38px;
 
-.card{
-max-width:1000px;
-margin:auto;
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(12px);
-padding:25px;
-border-radius:24px;
-}
-
-.lineup img{
-width:100%;
-border-radius:18px;
-}
-
-footer{
-padding:80px 20px;
-text-align:center;
-background:url('footer.png') center/cover;
-}
-
-.floating-btn{
-position:fixed;
-bottom:22px;
-left:50%;
-transform:translateX(-50%);
-padding:12px 22px;
-font-size:14px;
 border-radius:999px;
-text-decoration:none;
-color:white;
-background:rgba(255,122,0,.95);
-backdrop-filter:blur(10px);
-box-shadow:0 10px 30px rgba(255,122,0,.35);
-z-index:999;
-transition:.3s;
-}
 
-.floating-btn:hover{
-transform:translateX(-50%) translateY(-3px);
-}
+background:
 
-#transition{
-position:fixed;
-inset:0;
-background:#000;
-opacity:0;
-pointer-events:none;
-transition:all .8s ease;
-z-index:99998;
-}
+linear-gradient(
 
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
+135deg,
 
-.reveal.show{
-opacity:1;
-transform:none;
-}
+#FFD54F,
 
-.hero-ticket-btn{
-display:inline-block;
-padding:16px 34px;
-border-radius:999px;
-text-decoration:none;
-font-weight:700;
-background:linear-gradient(135deg,#FFD700,#F5C96A);
+#F5B041
+
+);
+
 color:#111;
-box-shadow:0 12px 35px rgba(245,201,106,.35);
-margin-top:10px;
+
+font-weight:700;
+
+font-size:18px;
+
+transition:var(--transition);
+
+box-shadow:
+
+0 18px 40px
+
+rgba(245,176,65,.30);
+
 }
 
+.hero-button:hover{
 
-.announcement{
-max-width:900px;margin:20px auto 0;
-padding:24px;border-radius:24px;
-background:linear-gradient(135deg,rgba(255,215,0,.18),rgba(255,122,0,.15));
-border:1px solid rgba(255,215,0,.4);
-animation:glow 2s infinite alternate;
+transform:
+
+translateY(-3px);
+
 }
-.hero h1{animation:fadeUp 1s ease;}
-.hero-ticket-btn,.floating-btn{animation:pulseBuy 1.6s infinite;}
-@keyframes pulseBuy{
-0%{transform:scale(1)}
-50%{transform:scale(1.06)}
-100%{transform:scale(1)}
+
+/* =====================================================
+RESPONSIVE
+===================================================== */
+
+@media(max-width:768px){
+
+.logo{
+
+width:110px;
+
 }
-@keyframes glow{
-from{box-shadow:0 0 20px rgba(255,215,0,.2)}
-to{box-shadow:0 0 45px rgba(255,215,0,.5)}
+
+.hero h1{
+
+font-size:42px;
+
 }
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(40px)}
-to{opacity:1;transform:translateY(0)}
+
+.hero p{
+
+font-size:15px;
+
+}
+
+.hero-button{
+
+width:100%;
+
+}
+
 }
 
 </style>
+
 </head>
+
 <body>
 
+<!-- =========================================
+PRELOADER
+========================================= -->
+
 <div id="loader">
-<img src="logo.webp" class="loader-logo" alt="Logo Event" loading="eager" fetchpriority="high">
-<div class="progress"><span></span></div>
+
+<img
+src="logo.webp"
+class="loader-logo"
+alt="Logo">
+
+<div class="loading-text">
+
+OFFICIAL TICKETING
+
 </div>
 
-<div id="transition"></div>
+<div class="progress">
+
+<span></span>
+
+</div>
+
+</div>
+
+<!-- =========================================
+HERO
+========================================= -->
 
 <section class="hero">
-<div class="container hero-content">
-<img src="logo-event.png" class="logo" alt="Logo Event" loading="eager">
-<img src="banner.png" class="banner" alt="Banner Event" loading="lazy">
 
-<h1>PEMBELIAN TIKET TAMBAHAN RESMI DIBUKA</h1>
-<p class="subtitle">Kuota tambahan terbatas • Amankan tiket sebelum habis</p>
+<div class="container">
 
+<div class="hero-content">
 
-<div class="announcement">
-<h2>🔥 TIKET TAMBAHAN TELAH RESMI DIBUKA</h2>
-<p style="margin-top:12px">
-Antusiasme sangat tinggi dan kuota sebelumnya telah terjual cepat.
-Kini pembelian tiket tambahan resmi dibuka dengan jumlah terbatas.
-Segera amankan kursi Anda sebelum penjualan ditutup kembali.
+<img
+src="logo-event.png"
+class="logo"
+alt="Logo Event">
+
+<img
+src="banner.png"
+class="banner"
+alt="Banner Event">
+
+<h1>
+
+SUNSET DI KEBUN 2026
+
+</h1>
+
+<p>
+
+Official Ticketing Website.
+Pastikan Anda membeli tiket hanya melalui halaman resmi ini.
+
 </p>
+
+<a
+href="tiket.html"
+class="hero-button">
+
+🎫 BELI TIKET SEKARANG
+
+</a>
+
 </div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+ANNOUNCEMENT
+===================================================== -->
+
+<section class="announcement">
+
+<div class="container">
+
+<div class="announcement-card">
+
+<div class="announcement-badge">
+
+🔥 TIKET TAMBAHAN RESMI DIBUKA
+
+</div>
+
+<h2>
+
+Kuota Terbatas Untuk Pembelian Tambahan
+
+</h2>
+
+<p>
+
+Karena tingginya antusiasme pengunjung, panitia membuka
+penjualan tiket tambahan dengan jumlah yang sangat terbatas.
+Pastikan Anda segera melakukan pembelian sebelum seluruh
+kuota kembali habis.
+
+</p>
+
+<div class="announcement-info">
+
+<div class="info-box">
+
+<strong>📅 Tanggal</strong>
+
+<span>Sabtu, 4 Juli 2026</span>
+
+</div>
+
+<div class="info-box">
+
+<strong>🕗 Waktu</strong>
+
+<span>19.00 WIB</span>
+
+</div>
+
+<div class="info-box">
+
+<strong>📍 Lokasi</strong>
+
+<span>Indonesia</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.announcement{
+
+padding:90px 0;
+
+background:#111;
+
+}
+
+.announcement-card{
+
+background:linear-gradient(
+135deg,
+rgba(245,176,65,.12),
+rgba(255,255,255,.04)
+);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:28px;
+
+padding:50px;
+
+text-align:center;
+
+box-shadow:var(--shadow);
+
+}
+
+.announcement-badge{
+
+display:inline-block;
+
+padding:10px 22px;
+
+border-radius:999px;
+
+background:#F5B041;
+
+color:#111;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+.announcement-card h2{
+
+font-size:40px;
+
+margin-bottom:20px;
+
+}
+
+.announcement-card p{
+
+color:#d8d8d8;
+
+line-height:1.9;
+
+max-width:760px;
+
+margin:auto;
+
+}
+
+.announcement-info{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:25px;
+
+margin-top:45px;
+
+}
+
+.info-box{
+
+padding:25px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.05);
+
+}
+
+.info-box strong{
+
+display:block;
+
+margin-bottom:10px;
+
+color:#F5B041;
+
+}
+
+.info-box span{
+
+color:#ddd;
+
+}
+
+@media(max-width:768px){
+
+.announcement{
+
+padding:70px 0;
+
+}
+
+.announcement-card{
+
+padding:30px;
+
+}
+
+.announcement-card h2{
+
+font-size:28px;
+
+}
+
+.announcement-info{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+<!-- =====================================================
+COUNTDOWN
+===================================================== -->
+
+<section class="countdown-section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Hitung Mundur Menuju Festival
+
+</h2>
+
+<p class="section-subtitle">
+
+Segera amankan tiket Anda sebelum waktu penjualan berakhir.
+
+</p>
 
 <div class="countdown">
-<div class="box"><span id="d">0</span><br>Hari</div>
-<div class="box"><span id="h">0</span><br>Jam</div>
-<div class="box"><span id="m">0</span><br>Menit</div>
-<div class="box"><span id="s">0</span><br>Detik</div>
+
+<div class="count-box">
+
+<div id="days">00</div>
+
+<span>Hari</span>
+
 </div>
 
-<div style="margin-top:30px"><a href="tiket.html" class="hero-ticket-btn">🎫 BELI TIKET SEKARANG</a></div>
+<div class="count-box">
+
+<div id="hours">00</div>
+
+<span>Jam</span>
+
 </div>
+
+<div class="count-box">
+
+<div id="minutes">00</div>
+
+<span>Menit</span>
+
+</div>
+
+<div class="count-box">
+
+<div id="seconds">00</div>
+
+<span>Detik</span>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="reveal">
-<div class="card">
-<h2>ABOUT EVENT</h2>
-<p style="margin-top:15px">
-Festival premium dengan tata panggung modern, ambience senja, dan pengalaman terbaik untuk pengunjung.
+<style>
+
+.countdown-section{
+
+padding:90px 0;
+
+background:#0b0b0b;
+
+text-align:center;
+
+}
+
+.section-title{
+
+font-size:42px;
+
+margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+color:#cfcfcf;
+
+margin-bottom:45px;
+
+}
+
+.countdown{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+}
+
+.count-box{
+
+width:150px;
+
+padding:30px 20px;
+
+border-radius:24px;
+
+background:#161616;
+
+box-shadow:var(--shadow);
+
+}
+
+.count-box div{
+
+font-size:50px;
+
+font-weight:800;
+
+color:#F5B041;
+
+margin-bottom:10px;
+
+}
+
+.count-box span{
+
+font-size:15px;
+
+color:#ddd;
+
+}
+
+@media(max-width:768px){
+
+.count-box{
+
+width:120px;
+
+padding:22px;
+
+}
+
+.count-box div{
+
+font-size:36px;
+
+}
+
+}
+
+</style>
+
+<!-- =====================================================
+ABOUT EVENT
+===================================================== -->
+
+<section class="about-event">
+
+<div class="container">
+
+<div class="about-grid">
+
+<div>
+
+<img
+src="lineup.jpg"
+alt="Event"
+class="about-image">
+
+</div>
+
+<div class="about-content">
+
+<h2>
+
+Tentang SUNSET DI KEBUN 2026
+
+</h2>
+
+<p>
+
+SUNSET DI KEBUN merupakan festival musik dengan konsep
+alam terbuka yang menghadirkan pengalaman konser premium,
+panggung megah, tata cahaya modern, serta penampilan musisi
+terbaik Indonesia.
+
 </p>
+
+<p>
+
+Nikmati suasana matahari terbenam, hiburan berkualitas,
+kuliner pilihan, area foto, dan pengalaman festival yang
+berbeda dari konser pada umumnya.
+
+</p>
+
+<a
+href="tiket.html"
+class="hero-button">
+
+BELI TIKET
+
+</a>
+
 </div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="lineup reveal">
-<div class="card">
-<h2 style="margin-bottom:20px">LINE UP</h2>
-<img src="lineup.jpg" alt="Line Up Event" loading="lazy">
+<style>
+
+.about-event{
+
+padding:100px 0;
+
+background:#101010;
+
+}
+
+.about-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
+}
+
+.about-image{
+
+border-radius:24px;
+
+box-shadow:var(--shadow);
+
+}
+
+.about-content h2{
+
+font-size:42px;
+
+margin-bottom:25px;
+
+}
+
+.about-content p{
+
+color:#d4d4d4;
+
+line-height:2;
+
+margin-bottom:20px;
+
+}
+
+@media(max-width:900px){
+
+.about-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.about-content{
+
+text-align:center;
+
+}
+
+}
+
+</style>
+
+<!-- =====================================================
+LINE UP
+===================================================== -->
+
+<section class="lineup-section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+LINE UP 2026
+
+</h2>
+
+<p class="section-subtitle">
+
+Deretan musisi yang siap memeriahkan SUNSET DI KEBUN 2026
+
+</p>
+
+<div class="lineup-card">
+
+<img
+src="lineup.jpg"
+alt="Line Up Sunset Di Kebun"
+loading="lazy"
+decoding="async">
+
 </div>
+
+</div>
+
 </section>
 
-<footer class="reveal">
-<h2>SEE YOU AT THE FESTIVAL</h2>
-<p>Powered by Premium Event Experience</p>
+<style>
+
+.lineup-section{
+
+padding:100px 0;
+
+background:#0b0b0b;
+
+text-align:center;
+
+}
+
+.lineup-card{
+
+margin-top:40px;
+
+overflow:hidden;
+
+border-radius:28px;
+
+box-shadow:var(--shadow);
+
+}
+
+.lineup-card img{
+
+width:100%;
+
+display:block;
+
+transition:transform .5s ease;
+
+}
+
+.lineup-card:hover img{
+
+transform:scale(1.03);
+
+}
+
+</style>
+
+<!-- =====================================================
+EVENT FACILITIES
+===================================================== -->
+
+<section class="facility-section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+FASILITAS EVENT
+
+</h2>
+
+<div class="facility-grid">
+
+<div class="facility-item">
+
+<div class="facility-icon">🎵</div>
+
+<h3>Live Music</h3>
+
+<p>
+
+Penampilan artis nasional dengan kualitas audio premium.
+
+</p>
+
+</div>
+
+<div class="facility-item">
+
+<div class="facility-icon">🍔</div>
+
+<h3>Food Festival</h3>
+
+<p>
+
+Puluhan tenant makanan dan minuman terbaik.
+
+</p>
+
+</div>
+
+<div class="facility-item">
+
+<div class="facility-icon">📸</div>
+
+<h3>Photo Spot</h3>
+
+<p>
+
+Area foto instagramable di berbagai sudut venue.
+
+</p>
+
+</div>
+
+<div class="facility-item">
+
+<div class="facility-icon">🚗</div>
+
+<h3>Parking Area</h3>
+
+<p>
+
+Area parkir kendaraan yang luas dan aman.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.facility-section{
+
+padding:100px 0;
+
+background:#101010;
+
+}
+
+.facility-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+margin-top:50px;
+
+}
+
+.facility-item{
+
+background:#181818;
+
+padding:35px;
+
+border-radius:24px;
+
+transition:.3s;
+
+}
+
+.facility-item:hover{
+
+transform:translateY(-8px);
+
+}
+
+.facility-icon{
+
+font-size:46px;
+
+margin-bottom:18px;
+
+}
+
+.facility-item h3{
+
+margin-bottom:15px;
+
+}
+
+.facility-item p{
+
+color:#cfcfcf;
+
+line-height:1.8;
+
+}
+
+@media(max-width:900px){
+
+.facility-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.facility-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+<!-- =====================================================
+FAQ
+===================================================== -->
+
+<section class="faq-section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Pertanyaan Yang Sering Diajukan
+
+</h2>
+
+<div class="faq">
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+Bagaimana cara membeli tiket?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Klik tombol BELI TIKET, pilih kategori tiket,
+isi data pemesan, kemudian lanjutkan pembayaran.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+Apakah tiket dapat dikembalikan?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Seluruh pembelian tiket bersifat final dan
+tidak dapat dibatalkan kecuali acara dibatalkan
+oleh penyelenggara.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+Metode pembayaran?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Pembayaran dilakukan menggunakan QRIS
+sesuai nominal yang muncul pada halaman pembayaran.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.faq-section{
+
+padding:100px 0;
+
+background:#0b0b0b;
+
+}
+
+.faq{
+
+max-width:900px;
+
+margin:auto;
+
+margin-top:50px;
+
+}
+
+.faq-item{
+
+background:#181818;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+overflow:hidden;
+
+}
+
+.faq-question{
+
+width:100%;
+
+padding:22px 28px;
+
+background:none;
+
+border:none;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+}
+
+.faq-answer{
+
+display:none;
+
+padding:0 28px 25px;
+
+color:#cfcfcf;
+
+line-height:1.9;
+
+}
+
+</style>
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+<h2>
+
+SUNSET DI KEBUN 2026
+
+</h2>
+
+<p>
+
+Official Ticketing Platform
+
+</p>
+
+<div class="footer-links">
+
+<a href="index.html">
+
+Home
+
+</a>
+
+<a href="tiket.html">
+
+Tiket
+
+</a>
+
+</div>
+
+<p class="copyright">
+
+© 2026 SUNSET DI KEBUN.
+All Rights Reserved.
+
+</p>
+
+</div>
+
 </footer>
 
-<a href="tiket.html" id="ticketBtn" class="floating-btn">🎫 Beli Tiket Sekarang</a>
+<style>
+
+footer{
+
+padding:70px 0;
+
+text-align:center;
+
+background:#050505;
+
+}
+
+footer h2{
+
+margin-bottom:12px;
+
+}
+
+footer p{
+
+color:#bbbbbb;
+
+}
+
+.footer-links{
+
+margin:30px 0;
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+}
+
+.footer-links a{
+
+transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+color:#F5B041;
+
+}
+
+.copyright{
+
+margin-top:25px;
+
+font-size:14px;
+
+}
+
+</style>
+
+<!-- =====================================================
+FLOATING BUTTON
+===================================================== -->
+
+<a
+
+href="tiket.html"
+
+class="floating-ticket"
+
+>
+
+🎫 BELI TIKET
+
+</a>
+
+<style>
+
+.floating-ticket{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+background:linear-gradient(135deg,#FFD54F,#F5B041);
+
+color:#111;
+
+padding:16px 28px;
+
+border-radius:999px;
+
+font-weight:700;
+
+box-shadow:0 20px 45px rgba(245,176,65,.35);
+
+z-index:999;
+
+transition:.3s;
+
+}
+
+.floating-ticket:hover{
+
+transform:translateY(-4px);
+
+}
+
+@media(max-width:768px){
+
+.floating-ticket{
+
+left:20px;
+
+right:20px;
+
+bottom:18px;
+
+text-align:center;
+
+}
+
+}
+
+</style> 
+
+<!-- =====================================================
+JAVASCRIPT
+===================================================== -->
 
 <script>
-window.addEventListener('load',()=>{
-setTimeout(()=>{
-document.getElementById('loader').style.opacity='0';
-setTimeout(()=>{
-document.getElementById('loader').style.display='none';
-},800);
-},800);
+
+/* ==========================================
+PRELOADER
+========================================== */
+
+window.addEventListener("load", () => {
+
+const loader = document.getElementById("loader");
+
+setTimeout(() => {
+
+loader.style.opacity = "0";
+
+setTimeout(() => {
+
+loader.remove();
+
+},600);
+
+},900);
+
 });
 
-const target=new Date("2026-12-31T18:00:00").getTime();
+/* ==========================================
+COUNTDOWN
+========================================== */
 
-setInterval(()=>{
-const now=new Date().getTime();
-const diff=target-now;
+const targetDate = new Date("2026-07-04T19:00:00").getTime();
 
-document.getElementById('d').innerText=Math.max(0,Math.floor(diff/86400000));
-document.getElementById('h').innerText=Math.max(0,Math.floor(diff%86400000/3600000));
-document.getElementById('m').innerText=Math.max(0,Math.floor(diff%3600000/60000));
-document.getElementById('s').innerText=Math.max(0,Math.floor(diff%60000/1000));
-},1000);
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
+function updateCountdown(){
+
+const now = Date.now();
+
+const distance = targetDate - now;
+
+if(distance <= 0){
+
+days.textContent="00";
+hours.textContent="00";
+minutes.textContent="00";
+seconds.textContent="00";
+
+clearInterval(countdownTimer);
+
+return;
+
 }
+
+const d = Math.floor(distance / (1000*60*60*24));
+
+const h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+const m = Math.floor((distance%(1000*60*60))/(1000*60));
+
+const s = Math.floor((distance%(1000*60))/1000);
+
+days.textContent = String(d).padStart(2,"0");
+hours.textContent = String(h).padStart(2,"0");
+minutes.textContent = String(m).padStart(2,"0");
+seconds.textContent = String(s).padStart(2,"0");
+
+}
+
+updateCountdown();
+
+const countdownTimer = setInterval(updateCountdown,1000);
+
+/* ==========================================
+FAQ ACCORDION
+========================================== */
+
+document.querySelectorAll(".faq-question").forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+const answer = button.nextElementSibling;
+
+const icon = button.querySelector("span");
+
+document.querySelectorAll(".faq-answer").forEach(item=>{
+
+if(item!==answer){
+
+item.style.display="none";
+
+}
+
 });
-},{threshold:.15});
 
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll(".faq-question span").forEach(i=>{
 
-const btn=document.getElementById('ticketBtn');
-if(btn){
-btn.addEventListener('click',function(e){
+if(i!==icon){
+
+i.textContent="+";
+
+}
+
+});
+
+if(answer.style.display==="block"){
+
+answer.style.display="none";
+
+icon.textContent="+";
+
+}else{
+
+answer.style.display="block";
+
+icon.textContent="−";
+
+}
+
+});
+
+});
+
+/* ==========================================
+SCROLL REVEAL
+========================================== */
+
+const revealObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+
+{
+
+opacity:0,
+
+transform:"translateY(40px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0)"
+
+}
+
+],{
+
+duration:700,
+
+fill:"forwards",
+
+easing:"ease"
+
+});
+
+revealObserver.unobserve(entry.target);
+
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+document.querySelectorAll(
+
+".announcement,.countdown-section,.about-event,.lineup-section,.facility-section,.faq-section,footer"
+
+).forEach(section=>{
+
+revealObserver.observe(section);
+
+});
+
+/* ==========================================
+SMOOTH PAGE TRANSITION
+========================================== */
+
+document.querySelectorAll("a").forEach(link=>{
+
+const href = link.getAttribute("href");
+
+if(
+href &&
+href.endsWith(".html")
+){
+
+link.addEventListener("click",function(e){
+
 e.preventDefault();
 
-const t=document.getElementById('transition');
-t.style.opacity='1';
+document.body.style.opacity="0";
 
 setTimeout(()=>{
-window.location='tiket.html';
-},1500);
+
+window.location=this.href;
+
+},250);
+
 });
+
 }
+
+});
+
+/* ==========================================
+ERROR IMAGE FALLBACK
+========================================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.onerror=function(){
+
+this.src="event.png";
+
+};
+
+});
+
+/* ==========================================
+PERFORMANCE
+========================================== */
+
+if("requestIdleCallback" in window){
+
+requestIdleCallback(()=>{
+
+console.log("Index Ready");
+
+});
+
+}
+
+/* ==========================================
+END
+========================================== */
+
 </script>
 
 </body>
-</html>
+</html>  
