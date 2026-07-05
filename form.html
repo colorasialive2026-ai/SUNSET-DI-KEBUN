@@ -1,18 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="id">
-
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08a4ff">
-  <meta name="description" content="Halaman data pemesanan tiket ETATIX - Sunset di Kebun 2026">
-
-  <title>SUNSET DI KEBUN 2026 | Data Pemesanan</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#08a4ff" name="theme-color"/>
+<meta content="Halaman data pemesanan tiket ETATIX - Sunset di Kebun 2026" name="description"/>
+<title>SUNSET DI KEBUN 2026 | Data Pemesanan</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
 
     /* ========================
        RESET & BASE
@@ -449,229 +445,170 @@
     }
 
   </style>
-
 </head>
-
 <body>
-
-  <!-- =========================
+<!-- =========================
        LOADING OVERLAY
        (Hanya satu, di luar container)
   ========================= -->
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p>Mohon tunggu...<br>Sedang memproses data pemesanan</p>
-  </div>
-
-  <div class="container">
-
-    <!-- =========================
+<div class="loading" id="loading">
+<div class="spinner"></div>
+<p>Mohon tunggu...<br/>Sedang memproses data pemesanan</p>
+</div>
+<div class="container">
+<!-- =========================
          HEADER
     ========================= -->
-    <header>
-      <div class="logo">
-        <span>ETA</span><span>TIX</span>
-      </div>
-    </header>
-
-    <!-- =========================
+<header>
+<div class="logo">
+<span>ETA</span><span>TIX</span>
+</div>
+</header>
+<!-- =========================
          STEPPER
     ========================= -->
-    <div class="stepper">
-
-      <!-- FIX: Tambah class "completed" agar garis ke step berikutnya berwarna biru -->
-      <div class="step completed active">
-        <div class="circle">1</div>
-        <p>Pilih Tiket</p>
-      </div>
-
-      <div class="step active">
-        <div class="circle">2</div>
-        <p>Data Pemesan</p>
-      </div>
-
-      <div class="step">
-        <div class="circle">3</div>
-        <p>Pembayaran</p>
-      </div>
-
-    </div>
-
-    <!-- =========================
+<div class="stepper">
+<!-- FIX: Tambah class "completed" agar garis ke step berikutnya berwarna biru -->
+<div class="step completed active">
+<div class="circle">1</div>
+<p>Pilih Tiket</p>
+</div>
+<div class="step active">
+<div class="circle">2</div>
+<p>Data Pemesan</p>
+</div>
+<div class="step">
+<div class="circle">3</div>
+<p>Pembayaran</p>
+</div>
+</div>
+<!-- =========================
          EVENT INFO
     ========================= -->
-    <div class="card">
-      <div class="event">
-        <img src="banner.png" id="eventBanner" alt="Banner Event">
-        <div class="event-info">
-          <h2 id="eventName">KENANGAN FESTIVAL 2026</h2>
-          <p id="eventDate">📅 Sabtu, 4 Juli 2026</p>
-          <p id="eventTime">🕗 19.00 WIB</p>
-          <p id="eventLocation">📍 Indonesia</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================
+<div class="card">
+<div class="event">
+<img alt="Banner Event" id="eventBanner" src="banner.png"/>
+<div class="event-info">
+<h2 id="eventName">KENANGAN FESTIVAL 2026</h2>
+<p id="eventDate">📅 Sabtu, 4 Juli 2026</p>
+<p id="eventTime">🕗 19.00 WIB</p>
+<p id="eventLocation">📍 Indonesia</p>
+</div>
+</div>
+</div>
+<!-- =========================
          DATA PEMESAN
     ========================= -->
-    <div class="card">
-      <div class="section">
-
-        <div class="section-title">Data Pemesan</div>
-
-        <!-- FIX: Tambah atribut "for" pada setiap label -->
-        <label for="nama">
+<div class="card">
+<div class="section">
+<div class="section-title">Data Pemesan</div>
+<!-- FIX: Tambah atribut "for" pada setiap label -->
+<label for="nama">
           Nama Lengkap <span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          id="nama"
-          placeholder="Masukkan nama lengkap"
-          autocomplete="name">
-
-        <label for="identitas">
+</label>
+<input autocomplete="name" id="nama" placeholder="Masukkan nama lengkap" type="text"/>
+<label for="identitas">
           Jenis Identitas <span class="required">*</span>
-        </label>
-        <select id="identitas">
-          <option value="">Pilih Jenis Identitas</option>
-          <option>KTP</option>
-          <option>SIM</option>
-          <option>Paspor</option>
-          <option>Kartu Pelajar</option>
-        </select>
-
-        <label for="nomorId">
+</label>
+<select id="identitas">
+<option value="">Pilih Jenis Identitas</option>
+<option>KTP</option>
+<option>SIM</option>
+<option>Paspor</option>
+<option>Kartu Pelajar</option>
+</select>
+<label for="nomorId">
           Nomor Identitas <span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          id="nomorId"
-          placeholder="Masukkan nomor identitas"
-          autocomplete="off">
-
-        <label for="email">
+</label>
+<input autocomplete="off" id="nomorId" placeholder="Masukkan nomor identitas" type="text"/>
+<label for="email">
           E-mail <span class="required">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          placeholder="contoh@email.com"
-          autocomplete="email">
-
-        <label for="wa">
+</label>
+<input autocomplete="email" id="email" placeholder="contoh@email.com" type="email"/>
+<label for="wa">
           Nomor WhatsApp <span class="required">*</span>
-        </label>
-        <div class="phone">
-          <select id="kodeNegara">
-            <option value="+62">+62</option>
-            <option value="+60">+60</option>
-            <option value="+65">+65</option>
-            <option value="+66">+66</option>
-          </select>
-          <!-- FIX: Tambah inputmode="tel" agar keyboard mobile menampilkan angka -->
-          <input
-            type="tel"
-            id="wa"
-            placeholder="81234567890"
-            inputmode="tel"
-            autocomplete="tel">
-        </div>
-
-        <label for="alamat">
+</label>
+<div class="phone">
+<select id="kodeNegara">
+<option value="+62">+62</option>
+<option value="+60">+60</option>
+<option value="+65">+65</option>
+<option value="+66">+66</option>
+</select>
+<!-- FIX: Tambah inputmode="tel" agar keyboard mobile menampilkan angka -->
+<input autocomplete="tel" id="wa" inputmode="tel" placeholder="81234567890" type="tel"/>
+</div>
+<label for="alamat">
           Alamat Lengkap <span class="required">*</span>
-        </label>
-        <textarea
-          id="alamat"
-          rows="4"
-          placeholder="Masukkan alamat lengkap"
-          autocomplete="street-address"></textarea>
-
-      </div>
-    </div>
-
-    <!-- =========================
+</label>
+<textarea autocomplete="street-address" id="alamat" placeholder="Masukkan alamat lengkap" rows="4"></textarea>
+</div>
+</div>
+<!-- =========================
          DATA PEMEGANG TIKET
     ========================= -->
-    <div class="card">
-      <div class="section">
-
-        <div class="section-title">Data Pemegang Tiket</div>
-
-        <div id="ticketHolders">
-          <!-- JavaScript akan mengisi otomatis -->
-        </div>
-
-      </div>
-    </div>
-
-    <!-- =========================
+<div class="card">
+<div class="section">
+<div class="section-title">Data Pemegang Tiket</div>
+<div id="ticketHolders">
+<!-- JavaScript akan mengisi otomatis -->
+</div>
+</div>
+</div>
+<!-- =========================
          RINGKASAN PESANAN
     ========================= -->
-    <div class="card">
-      <div class="summary">
-
-        <div class="section-title">Ringkasan Pesanan</div>
-
-        <div class="row">
-          <span>Nama Event</span>
-          <strong id="summaryEvent">KENANGAN FESTIVAL 2026</strong>
-        </div>
-
-        <div class="row">
-          <span>Total Tiket</span>
-          <strong id="summaryQty">0</strong>
-        </div>
-
-        <hr>
-
-        <div id="summaryItems">
-          <!-- JavaScript akan mengisi otomatis -->
-        </div>
-
-        <hr>
-
-        <div class="row">
-          <span>Subtotal</span>
-          <strong id="summarySubtotal">Rp0</strong>
-        </div>
-
-        <div class="row total">
-          <span>Grand Total</span>
-          <strong id="grandTotal">Rp0</strong>
-        </div>
-
-        <!-- FIX: Label untuk checkbox -->
-        <div class="agreement">
-          <input type="checkbox" id="setuju">
-          <label for="setuju" style="margin-top:0;cursor:pointer;">
-            <p style="margin:0;">
+<div class="card">
+<div class="summary">
+<div class="section-title">Ringkasan Pesanan</div>
+<div class="row">
+<span>Nama Event</span>
+<strong id="summaryEvent">KENANGAN FESTIVAL 2026</strong>
+</div>
+<div class="row">
+<span>Total Tiket</span>
+<strong id="summaryQty">0</strong>
+</div>
+<hr/>
+<div id="summaryItems">
+<!-- JavaScript akan mengisi otomatis -->
+</div>
+<hr/>
+<div class="row">
+<span>Subtotal</span>
+<strong id="summarySubtotal">Rp0</strong>
+</div>
+<div class="row total">
+<span>Grand Total</span>
+<strong id="grandTotal">Rp0</strong>
+</div>
+<!-- FIX: Label untuk checkbox -->
+<div class="agreement">
+<input id="setuju" type="checkbox"/>
+<label for="setuju" style="margin-top:0;cursor:pointer;">
+<p style="margin:0;">
               Saya menyatakan bahwa seluruh data yang saya isi adalah benar, lengkap, dan dapat dipertanggungjawabkan. Saya telah membaca, memahami, serta menyetujui seluruh syarat dan ketentuan pembelian tiket melalui ETATIX dan bersedia mengikuti seluruh peraturan yang ditetapkan oleh penyelenggara acara.
             </p>
-          </label>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- =========================
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- =========================
        FOOTER (fixed bottom)
   ========================= -->
-  <div class="footer">
-    <div class="footer-info">
-      <div>
-        <div class="footer-label">Grand Total</div>
-        <div class="footer-price" id="footerTotal">Rp0</div>
-      </div>
-    </div>
-    <button class="checkout" id="checkoutBtn" disabled>
+<div class="footer">
+<div class="footer-info">
+<div>
+<div class="footer-label">Grand Total</div>
+<div class="footer-price" id="footerTotal">Rp0</div>
+</div>
+</div>
+<button class="checkout" disabled="" id="checkoutBtn">
       Lanjut Pembayaran
     </button>
-  </div>
-
-  <script>
+</div>
+<script>
 
     /* ============================
        FORMAT RUPIAH
@@ -876,7 +813,5 @@
     });
 
   </script>
-
 </body>
-
 </html>
