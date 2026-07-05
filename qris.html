@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SUNSET DI KEBUN- Pembayaran QRIS</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 
@@ -157,20 +158,15 @@ animation:r 1s linear infinite;
 </style>
 </head>
 <body>
-
 <div style="text-align:center;margin-bottom:25px">
-<img src="logo-event.png" style="max-width:260px;width:100%;">
+<img src="logo-event.png" style="max-width:260px;width:100%;"/>
 </div>
-
 <div class="container">
-
 <div class="card">
 <div class="label">ORDER ID</div>
-<div id="orderId" class="order">-</div><br>
-
+<div class="order" id="orderId">-</div><br/>
 <div class="label">TOTAL PEMBAYARAN</div>
-<div id="total" class="total">Rp 0</div>
-
+<div class="total" id="total">Rp 0</div>
 <div class="info">
 <div><b>Jenis Tiket:</b> <span id="jenisTiket">-</span></div>
 <div><b>Jumlah Tiket:</b> <span id="jumlahTiket">0</span></div>
@@ -178,52 +174,38 @@ animation:r 1s linear infinite;
 <div><b>WhatsApp:</b> <span id="waPemesan">-</span></div>
 </div>
 </div>
-
 <div class="card qrwrap">
-
 <div class="timer-box">
 <div class="timer-title">SELESAIKAN PEMBAYARAN DALAM</div>
-<div id="timer" class="timer">03:00</div>
+<div class="timer" id="timer">03:00</div>
 </div>
-
 <div class="qr">
-<img src="qris-sunset.png" alt="QRIS">
+<img alt="QRIS" src="qris-sunset.png"/>
 </div>
-
 </div>
-
 <div class="card">
-
 <label for="file">
 <div class="upload">
 <h3>Upload Bukti Pembayaran</h3>
 <p>Pilih file bukti pembayaran</p>
 </div>
 </label>
-
-<input id="file" type="file" hidden accept="image/*">
-
-<div id="result" class="result">
+<input accept="image/*" hidden="" id="file" type="file"/>
+<div class="result" id="result">
 <div id="fname"></div>
 <div class="ok">✓ Bukti pembayaran berhasil dipilih</div>
 </div>
-
 <div class="confirm">
-<input type="checkbox" id="cek">
+<input id="cek" type="checkbox"/>
 <label for="cek">Saya menyatakan telah melakukan pembayaran dan mengunggah bukti pembayaran yang valid.</label>
 </div>
-
-<button id="btn" disabled>KONFIRMASI PEMBAYARAN</button>
-
+<button disabled="" id="btn">KONFIRMASI PEMBAYARAN</button>
 </div>
-
 </div>
-
-<div id="loading" class="loading">
+<div class="loading" id="loading">
 <div class="spin"></div>
 <h2 style="margin-top:20px">Memproses Pembayaran...</h2>
 </div>
-
 <script>
 
 if(!localStorage.getItem('orderId')){
@@ -291,13 +273,10 @@ updateBtn();
 cek.addEventListener('change',updateBtn);
 
 </script>
-
-
 <script>
 function saveOrder(d){localStorage.setItem('ticketOrder',JSON.stringify(d));}
 function loadOrder(){try{return JSON.parse(localStorage.getItem('ticketOrder'))||{};}catch(e){return {};}}
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script>
 async function bacaNominalDariGambar(fileObj){
@@ -336,6 +315,5 @@ btn.addEventListener('click', async ()=>{
   }
 });
 </script>
-
 </body>
 </html>
